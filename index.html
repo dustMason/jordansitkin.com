@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan Sitkin</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: #fff;
+        font-family: "Source Code Pro", monospace;
+        padding: 0 5ch 0 4ch;
+        margin: 0;
+        font-weight: 400;
+        color: #333;
+      }
+      h1 {
+        margin: 0;
+        padding: 2rem 0 1rem 0;
+      }
+      @media screen {
+        html {
+          background: #eee;
+        }
+        body {
+          max-width: 80ch;
+          border-right: 1px solid #eee;
+        }
+      }
+      h3, h4, h5 {
+        margin: 0;
+      }
+      body, h4, h5 {
+        font-size: 10pt;
+        font-weight: normal;
+      }
+      header, section {
+        padding: 0 0 1rem 0;
+      }
+      dd {
+        margin: 0 0 1rem 0;
+      }
+      ul {
+        margin: 1rem 0 0 -4ch;
+        padding: 0 0 0 4ch;
+      }
+      li {
+        padding: 0 0 1rem 0;
+        list-style: none;
+      }
+      li::before {
+        content: "=> ";
+        position: relative;
+        margin-left: -3ch;
+      }
+      h5, dt, li::before, footer {
+        color: #aaa;
+      }
+      a {
+        color: #0074D9;
+      }
+      a svg {
+        width: 1rem;
+        height: 1rem;
+        vertical-align: middle;
+        margin-top: -2px;
+      }
+      footer {
+        padding: 0 0 1rem 0;
+      }
+      /*aside {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        padding-left: 80ch;
+      }*/
+      #waves {
+        position: fixed;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <h1><span class="reveal">Jordan Sitkin</span><span class="cursor">_</span></h1>
+      <div>email &nbsp;<a href="mailto:jsitkin@gmail.com">jsitkin@gmail.com</a></div>
+      <div>github <a href="https://github.com/dustmason">@dustmason</a></div>
+    </header>
+
+    <section class="skills">
+      <h2 class="reveal">Skills</h2>
+      <dl>
+        <dt>Languages</dt>
+        <dd>Ruby, Javascript, C, Scala</dd>
+        <dt>Frameworks</dt>
+        <dd>Rails, Sinatra, RSpec, Node.js, React, Gulp, Arduino</dd>
+        <dt>Servers</dt>
+        <dd>Amazon AWS, Heroku, Puma, Unicorn, Apache, Nginx, ElasticSearch, Redis, PostgreSQL</dd>
+        <dt>Tools</dt>
+        <dd>Git, Adobe CS, vim, WebKit, Docker</dd>
+      </dl>
+    </section>
+
+    <section class="experience">
+      <h2 class="reveal">Recent Experience</h2>
+
+      <section>
+        <h3>
+          <span class="reveal">Kit Kraft</span>
+          <a href="https://kitkraft.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+        </h3>
+        <h4>Senior Developer</h4>
+        <h5>2015-2016 in Oakland, CA</h5>
+        <ul>
+          <li>Finished a complete rewrite and subsequent redesign of the site, leaving behind an aging PHP framework (X-Cart) and moving to a custom fork of a Rails framework (Spree).</li>
+          <li>Created a portable and scalable development / deployment workflow on top of docker and AWS.</li>
+          <li>Integrated the site with a new point of sale and inventory tracking system used at the brick and mortar store.</li>
+          <li>Created a custom shipping backend for automated shipping labels with USPS and FedEx.</li>
+          <li>Built accounting tools to help manage incoming and outgoing cash among several services.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>
+          <span class="reveal">Nuts.com</span>
+          <a href="https://nuts.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+        </h3>
+        <h4>Tech Nut</h4>
+        <h5>2014-2015 in Oakland, CA</h5>
+        <ul>
+          <li>Executed a redesign of the site.</li>
+          <li>Organized a pile of jQuery spaghetti into a neat system of AMD modules.</li>
+          <li>Oversaw ongoing efforts to refine and improve the customer UX.</li>
+          <li>Helped move a brittle deployment flow based on Chef to a more robust one based on Docker and AWS.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>
+          <span class="reveal">Decurate</span>
+          <a href="https://www.designwithbenefits.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+        </h3>
+        <h4>Co-Founder / CTO</h4>
+        <h5>2011-2014 in Santiago, Chile</h5>
+        <ul>
+          <li>Designed and coded a scratchbuilt ecommerce platform with rails, deployed on Heroku.</li>
+          <li>Optimized the stack to handle bursts of heavy traffic with aggressive caching and background job queues using memcached and redis.</li>
+          <li>Integrated APIs for payment processing including Authorize.net, Stripe and Dwolla.</li>
+          <li>Built a consistently threadsafe rails stack to facilitate on-demand scaling.</li>
+          <li>Designed and implemented the entire front-end, including UI/UX design and code.</li>
+          <li>Maintained a comprehensive test suite using RSpec and Capybara.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>
+          <span class="reveal">Specify</span>
+          <a href="http://specifyapp.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+        </h3>
+        <h4>Co-Founder / CTO</h4>
+        <h5>2010-2014 in San Francisco, CA</h5>
+        <ul>
+          <li>Implemented a complex one page app without a javascript framework (learned many lessons).</li>
+          <li>Designed all branding and marketing materials including the public site.</li>
+          <li>Created an in-app live messaging feature using the OpenFire XMPP server, a custom javascript client for the browser and a ColdFusion component for the back-end.</li>
+          <li>Drafted a spec for an HTML microformat to facilitate data sharing and interoperability among other tools and services used by interior designers.</li>
+          <li>Specify continues to serve a growing customer base including the purchasing team at one of the largest hotel groups in the world.</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <footer>
+      Updated September 2016
+    </footer>
+    
+    <svg id="waves"></svg>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    
+    <script>
+      var title = document.getElementsByClassName("name")[0];
+      var cursor = document.getElementsByClassName("cursor")[0];
+
+      function reveal(element, delay) {
+        var content, letters, revealerTimer;
+        content = element.textContent;
+        element.textContent = "_";
+        letters = content.split("");
+        setTimeout(function() {
+          element.textContent = letters.shift();
+          revealerTimer = setInterval(function() {
+            if (letters.length > 0) {
+              element.textContent = element.textContent + letters.shift();
+            } else {
+              clearInterval(revealerTimer);
+            }
+          }, 30);
+        }, delay);
+      }
+
+      var elements = document.getElementsByClassName("reveal");
+      for (i = 0; i < elements.length; i++) {
+        reveal(elements[i], i * 150);
+      }
+
+      setInterval(function() {
+        if (cursor.style.display == "none") {
+          cursor.style.display = "inline";
+        } else {
+          cursor.style.display = "none";
+        }
+      }, 750);
+      
+      // TODO load the generated point clouds
+      
+      window.pointCloud = [];
+      function draw(points) {
+        for (i=0; i < window.pointCloud.length; i++) {
+          
+          // TODO the pointCloud is already sorted. iterate over points and draw lines
+          
+          // for (int i = 0; i < lines.size(); i++) {
+          //   gcode.go(lines.get(i).end.x, lines.get(i).end.y);
+          //   lines.get(i).strokeSytle();
+          //   if (mode == 1) lines.get(i).draw();
+          //   if (mode == 0) lines.get(i).drawSmooth();
+          // }
+          
+        }
+      }
+      
+    </script>
+      
+  </body>
+</html>
