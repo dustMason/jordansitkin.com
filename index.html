@@ -71,17 +71,21 @@
       footer {
         padding: 0 0 1rem 0;
       }
-      /*aside {
+      
+      aside {
         position: fixed;
         top: 0;
-        bottom: 0;
-        right: 0;
-        padding-left: 80ch;
-      }*/
-      #waves {
-        position: fixed;
         left: 0;
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+        overflow: hidden;
+      }
+      
+      #drawing {
+        position: absolute;
         top: 0;
+        left: 0;
       }
     </style>
   </head>
@@ -180,7 +184,9 @@
       Updated September 2016
     </footer>
     
-    <svg id="waves"></svg>
+    <aside>
+      <canvas id="drawing" width="2000" height="1400" style="width: 1000px; height: 700px"></svg>
+    </aside>
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
     
@@ -218,24 +224,40 @@
         }
       }, 750);
       
-      // TODO load the generated point clouds
+      var canvas = document.querySelector("#drawing");
+      var context = canvas.getContext("2d");
+      context.scale(2,2);
+      var width = canvas.clientWidth;
+      var height = canvas.clientHeight;
       
-      window.pointCloud = [];
-      function draw(points) {
-        for (i=0; i < window.pointCloud.length; i++) {
-          
-          // TODO the pointCloud is already sorted. iterate over points and draw lines
-          
-          // for (int i = 0; i < lines.size(); i++) {
-          //   gcode.go(lines.get(i).end.x, lines.get(i).end.y);
-          //   lines.get(i).strokeSytle();
-          //   if (mode == 1) lines.get(i).draw();
-          //   if (mode == 0) lines.get(i).drawSmooth();
-          // }
-          
-        }
-      }
+      var xscale = d3.scaleLinear().range([0,width]).domain([0,600]);
+      var yscale = d3.scaleLinear().range([0,height]).domain([0,450]);
       
+      var xhr = d3.json("dave.json")
+        // .on("progress", function() { console.log("progress"); })
+        // .on("load", function(json) { console.log("success!"); })
+        // .on("error", function(error) { console.log("failure!", error); })
+        .get(function(error, data) {
+          context.lineWidth = 0.2;
+          context.strokeStyle = "rgba(0,0,0,0.1)";
+          context.fillStyle = "rgba(0,0,0,0.1)";
+          var k = 1;
+          var draw = function() {
+            context.beginPath();
+            context.moveTo(xscale(data[k-1][0]), yscale(data[k-1][1]));
+            var x = xscale(data[k][0]);
+            var y = yscale(data[k][1]);
+            context.lineTo(x,y);
+            context.arc(x,y,2,0,2 * Math.PI);
+            context.stroke();
+            context.fill();
+            if (k < data.length - 1) {
+              setTimeout(draw, 0);
+              k++;
+            }
+          }
+          draw(k);
+        });
     </script>
       
   </body>
