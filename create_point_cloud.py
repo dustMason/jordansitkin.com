@@ -20,7 +20,7 @@ def find_targets(n, image):
     W, H = image.size
     targets = []
     for i in range(0,int(n)):
-        pos = target(pixels, randint(0,W-1), randint(0, H-1), width, height, 0)
+        pos = target(pixels, randint(0,W-1), randint(0, H-1), W, H, 0)
         targets.append(pos)
     return targets
     
@@ -45,7 +45,7 @@ def is_valid_target(pixel):
     else:
         value = int(translate(brightness, 0, 255, 1, 200))
         r = randint(0, value)
-        return r <= 1
+        return r <= 20
         
 def translate(value, leftMin, leftMax, rightMin, rightMax):
     """Equivalent to processing.org's map function"""
@@ -64,72 +64,57 @@ def sort_points(targets):
     points.append(targets.pop(start_index))
     while len(targets) > 0:
         last_point = points[i]
-        next_index = get_closest_index(last_point, targets)
+        # next_index = nearest_neighbor_index(last_point, targets)
+        next_index = chaotic_nearest_neighbor_index(last_point, targets, 10)
         points.append(targets.pop(next_index))
         i += 1
     return points
 
-def get_closest_index(point, targets):
+def nearest_neighbor_index(point, targets):
     """Returns the index of the closest point to `point` in `targets` by
-    euclidean distance."""
+    euclidean distance. AKA Naïve Nearest Neighbor."""
     closest_dist = math.inf
     closest_index = 0
     dis = 0
     for i, target in enumerate(targets):
-        dis = np.linalg.norm(point - target) # euclidean distance
+        dis = np.linalg.norm(target - point) # euclidean distance
         if dis < closest_dist:
             closest_dist = dis
             closest_index = i
-    return i
+    return closest_index
     
-# TODO port this alternate algorithm that includes a "stretchiness" factor
-
-# int getClosestIndex(PVector start, int n, ArrayList <PVector> lookup) {
-#   float[] closestDist = new float[n];
-#   int[] closestIndex = new int[n];
-# 
-#   for (int i = 0; i < n; i++) {
-#     closestDist[i] = width*height;
-#     closestIndex[i] = 0;
-#   }
-# 
-#   float dis = 0;
-#   float disMin = width*height, disMax = disMin*2;
-# 
-#   for (int i = 0; i < lookup.size(); i++) {
-#     dis = PVector.dist(start, lookup.get(i));
-#     if (dis < disMin ) {
-#       disMin = dis;
-#       closestDist[0] = dis;
-#       closestIndex[0] = i;
-#     } else if (dis > disMin && dis < disMax) {
-#       int index = i;
-#       for (int j = 0; j < n-1; j++) {
-#         if (closestDist[j] < dis && closestDist[j+1] > dis) {
-#           index=j+1;
-#           break;
-#         }
-#       }
-#       for (int j = n-1; j > 0; j--) {
-#         if (j == index) {
-#           closestDist[j] = dis;
-#           closestIndex[j] = i;
-#           break;
-#         } else {
-#           if (j > 1) {
-#             closestIndex[j] = closestIndex[j-1];
-#             closestDist[j] = closestDist[j-1];
-#           }
-#         }
-#       }
-#       disMax = closestDist[n-1];
-#     }
-#   }
-# 
-#   /* int index = closestIndex[(int) random(n)]; */
-#   int index = closestIndex[(int) n-1];
-#   return index;
-# }
+def chaotic_nearest_neighbor_index(point, targets, samples):
+    """Like `nearest_neighbor_index`, but returns a random point from among
+    the n nearest neighbors, where n = `samples`. Slow."""
+    closest_dist = [math.inf] * samples
+    closest_index = [0] * samples
+    dis = 0.0
+    dis_min = math.inf
+    dis_max = math.inf
+    
+    for i, target in enumerate(targets):
+        dis = np.linalg.norm(target - point) # euclidean distance
+        if dis < dis_min:
+            dis_min = dis
+            closest_dist[0] = dis
+            closest_index[0] = i
+        elif dis > dis_min and dis < dis_max:
+            index = 1
+            for j in range(0,samples-1):
+                if dis > closest_dist[j] and dis < closest_dist[j+1]:
+                    index = j+1
+                    break
+            for j in range(samples-1, 0, -1):
+                if j == index:
+                    closest_dist[j] = dis
+                    closest_index[j] = i
+                    break
+                elif j > 1:
+                    closest_index[j] = closest_index[j-1]
+                    closest_dist[j] = closest_dist[j-1]
+            dis_max = closest_dist[samples-1]
+            
+    return closest_index[randint(0,samples-1)]
 
 point_cloud = find_targets(sys.argv[2], Image.open(sys.argv[1]))
 print(json.dumps(list(map(lambda p: p.tolist(), sort_points(point_cloud)))))
