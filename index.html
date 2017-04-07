@@ -19,7 +19,8 @@
       }
       h1 {
         margin: 0;
-        padding: 2rem 0 1rem 0;
+        padding: 1rem 0;
+        font-size: 2.5rem;
       }
       @media screen {
         html {
@@ -37,8 +38,15 @@
         font-size: 10pt;
         font-weight: normal;
       }
-      header, section {
+      header {
+        padding: 2rem 0 3rem 0;
+      }
+      section {
         padding: 0 0 1rem 0;
+      }
+      .intro {
+        font-size: 1.5rem;
+        margin: 0 0 5rem 0;
       }
       dd {
         margin: 0 0 1rem 0;
@@ -75,44 +83,56 @@
       aside {
         position: fixed;
         top: 0;
-        left: 0;
-        width: 100%;
+        left: 80ch;
+        right: 0;
         height: 100%;
-        vertical-align: top;
+        width: 100%;
         overflow: hidden;
-      }
-      
-      #drawing {
-        position: absolute;
-        top: 0;
-        left: 0;
       }
     </style>
   </head>
   <body>
 
     <header>
-      <h1><span class="reveal">Jordan Sitkin</span><span class="cursor">_</span></h1>
       <div>email &nbsp;<a href="mailto:jsitkin@gmail.com">jsitkin@gmail.com</a></div>
       <div>github <a href="https://github.com/dustmason">@dustmason</a></div>
+      <h1><span class="reveal">Jordan Sitkin</span><span class="cursor">_</span></h1>
     </header>
-
-    <section class="skills">
-      <h2 class="reveal">Skills</h2>
+    
+    <section>
+      <p class="intro">
+        I'm a developer based in Oakland, CA. Currently at
+        <a href="https://kitkraft.com">Kit&nbsp;Kraft</a>. 
+      </p>
+      
       <dl>
         <dt>Languages</dt>
-        <dd>Ruby, Javascript, C, Scala</dd>
-        <dt>Frameworks</dt>
-        <dd>Rails, Sinatra, RSpec, Node.js, React, Gulp, Arduino</dd>
-        <dt>Servers</dt>
-        <dd>Amazon AWS, Heroku, Puma, Unicorn, Apache, Nginx, ElasticSearch, Redis, PostgreSQL</dd>
+        <dd>Ruby, JavaScript, Python</dd>
+        <dt>Frameworks &amp; Platforms</dt>
+        <dd>
+          Amazon AWS, Apache, Arduino, ElasticSearch, Heroku, Nginx, Node.js,
+          PostgreSQL, Puma, Rails, Redis, RSpec, SASS, Spree, Sinatra, Unicorn
+        </dd>
         <dt>Tools</dt>
-        <dd>Git, Adobe CS, vim, WebKit, Docker</dd>
+        <dd>Adobe CS, bash, Docker, Git, vim</dd>
       </dl>
     </section>
 
     <section class="experience">
-      <h2 class="reveal">Recent Experience</h2>
+      <h2 class="reveal">Skills &amp; Experience</h2>
+      
+      <p>
+        I started my career in 2000 designing packages for a toy company, but I've
+        enjoyed programming since I was a kid (my first computer was an Apple IIgs).
+        My first experience writing code was manually copying programs into a
+        terminal by hand from computer magazines!
+      </p>
+      <p>
+        I love programming. I enjoy creating and contributing to open source projects,
+        watching talks and lectures, taking online courses and working on side
+        projects. I find that my background as a designer influences my practice as
+        a programmer.
+      </p>
 
       <section>
         <h3>
@@ -184,15 +204,11 @@
       Updated September 2016
     </footer>
     
-    <aside>
-      <canvas id="drawing" width="2000" height="1400" style="width: 1000px; height: 700px"></svg>
-    </aside>
-
     <script src="https://d3js.org/d3.v4.min.js"></script>
     
     <script>
       var title = document.getElementsByClassName("name")[0];
-      var cursor = document.getElementsByClassName("cursor")[0];
+      // var cursor = document.getElementsByClassName("cursor")[0];
 
       function reveal(element, delay) {
         var content, letters, revealerTimer;
@@ -216,47 +232,137 @@
         reveal(elements[i], i * 150);
       }
 
-      setInterval(function() {
-        if (cursor.style.display == "none") {
-          cursor.style.display = "inline";
-        } else {
-          cursor.style.display = "none";
+      // setInterval(function() {
+      //   if (cursor.style.display == "none") {
+      //     cursor.style.display = "inline";
+      //   } else {
+      //     cursor.style.display = "none";
+      //   }
+      // }, 750);
+      
+      // // // // // // // // // // // // // // // //
+      // // // // // // // // // // // // // // // //
+      // // // // // // // // // // // // // // // //
+      
+      var container, particle, list, tog, man, dx, dy, mx, my, d, t, f, i, n, o, p,
+        canvas, context, width, height, xscale, yscale, data, NUM_PARTICLES;
+      var THICKNESS = Math.pow(80, 2), COLOR = 0, DRAG = 0.55, EASE = 0.02;
+      
+      particle = { vx: 0, vy: 0, x: 0, y: 0 };
+      
+      container = document.createElement("aside");
+      canvas = document.createElement("canvas");
+      context = canvas.getContext("2d");
+      document.body.appendChild(container);
+      container.appendChild(canvas);
+      
+      var setScale = function() {
+        height = parseInt(container.clientHeight);
+        width = parseInt(height * 1.333);
+        xscale = d3.scaleLinear().range([0,width]).domain([0,600]);
+        yscale = d3.scaleLinear().range([0,height]).domain([0,450]);
+        console.log(width, height);
+        canvas.width = width;
+        canvas.height = height;
+        if (data) {
+          loadPoints(data);
         }
-      }, 750);
+      }
       
-      var canvas = document.querySelector("#drawing");
-      var context = canvas.getContext("2d");
-      context.scale(2,2);
-      var width = canvas.clientWidth;
-      var height = canvas.clientHeight;
+      var loadPoints = function(points) {
+        data = points;
+        list = [];
+        NUM_PARTICLES = data.length;
+        for (i = 0; i < NUM_PARTICLES; i++) {
+          var p = Object.create(particle);
+          p.ox = xscale(data[i][0]);
+          p.oy = yscale(data[i][1]);
+          if (i === 0) {
+            p.x = p.ox;
+            p.y = p.oy;
+          } else {
+            p.x = xscale(data[i-1][0]);
+            p.y = yscale(data[i-1][1]);
+          }
+          list[i] = p;
+        }
+      }
       
-      var xscale = d3.scaleLinear().range([0,width]).domain([0,600]);
-      var yscale = d3.scaleLinear().range([0,height]).domain([0,450]);
+      setScale();
+      window.addEventListener("resize", setScale);
+          
+      var step = function() {
+        if (tog = !tog) {
+          
+          // update positions of all points by easing closer to original coords
+          for (i = 0; i < NUM_PARTICLES; i++) {
+            p = list[i];
+            d = (dx = mx - p.x) * dx + (dy = my - p.y) * dy;
+            f = -THICKNESS / d;
+            if (d < THICKNESS) {
+              t = Math.atan2(dy, dx);
+              p.vx += f * Math.cos(t);
+              p.vy += f * Math.sin(t);
+            }
+            p.x += (p.vx *= DRAG) + (p.ox - p.x) * EASE;
+            p.y += (p.vy *= DRAG) + (p.oy - p.y) * EASE;
+          }
+
+        } else {
+          
+          // fade current canvas
+          context.fillStyle = "rgba(250,250,250,0.01)";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          
+          // activate pixel corresponding to each point, and each point to N/S/E/W
+          b = (a = context.getImageData(0, 0, width, height)).data;
+          for (i = 0; i < NUM_PARTICLES; i++) {
+            p = list[i];
+            b[n = (~~p.x + (~~p.y * width)) * 4] = b[n+1] = b[n+2] = COLOR, b[n+3] = 255;
+            // b[nn = n - (width * 4)] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
+            // b[nn = n + (width * 4)] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
+            // b[nn = n + 4] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
+            // b[nn = n - 4] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
+          }
+          context.putImageData(a, 0, 0);
+          
+          // context.clearRect(0, 0, canvas.width, canvas.height);
+          // context.fillStyle = "rgba(255,255,255,0.1)";
+          // context.fillRect(0, 0, canvas.width, canvas.height);
+          // context.fillStyle = "#333";
+          // context.moveTo(list[0].x, list[0].y);
+          // for (i = 1; i < NUM_PARTICLES; i++) {
+          //   p = list[i];
+          //   o = list[i-1];
+          //   context.beginPath();
+          //   // context.moveTo(o.x, o.y);
+          //   // context.lineTo(p.x, p.y);
+          //   // context.stroke();
+          //   context.arc(p.x, p.y, 2, 0, 2 * Math.PI);
+          //   // context.rect(p.x, p.y, 3, 3);
+          //   context.fill();
+          //   context.closePath();
+          // }
+          
+        }
+        requestAnimationFrame(step);
+      }
+      
+      container.addEventListener('mousemove', function(e) {
+        var bounds = container.getBoundingClientRect();
+        mx = e.clientX - bounds.left;
+        my = e.clientY - bounds.top;
+        man = true;
+      });
+  
       
       var xhr = d3.json("dave.json")
         // .on("progress", function() { console.log("progress"); })
         // .on("load", function(json) { console.log("success!"); })
         // .on("error", function(error) { console.log("failure!", error); })
-        .get(function(error, data) {
-          context.lineWidth = 0.2;
-          context.strokeStyle = "rgba(0,0,0,0.1)";
-          context.fillStyle = "rgba(0,0,0,0.1)";
-          var k = 1;
-          var draw = function() {
-            context.beginPath();
-            context.moveTo(xscale(data[k-1][0]), yscale(data[k-1][1]));
-            var x = xscale(data[k][0]);
-            var y = yscale(data[k][1]);
-            context.lineTo(x,y);
-            context.arc(x,y,2,0,2 * Math.PI);
-            context.stroke();
-            context.fill();
-            if (k < data.length - 1) {
-              setTimeout(draw, 0);
-              k++;
-            }
-          }
-          draw(k);
+        .get(function(error, d) {
+          loadPoints(d);
+          step();
         });
     </script>
       
