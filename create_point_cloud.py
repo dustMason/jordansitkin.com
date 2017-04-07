@@ -65,7 +65,7 @@ def sort_points(targets):
     while len(targets) > 0:
         last_point = points[i]
         # next_index = nearest_neighbor_index(last_point, targets)
-        next_index = chaotic_nearest_neighbor_index(last_point, targets, 10)
+        next_index = chaotic_nearest_neighbor_index(last_point, targets, 20)
         points.append(targets.pop(next_index))
         i += 1
     return points
