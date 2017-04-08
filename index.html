@@ -5,366 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jordan Sitkin</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet">
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        background: #fff;
-        font-family: "Source Code Pro", monospace;
-        padding: 0 5ch 0 4ch;
-        margin: 0;
-        font-weight: 400;
-        color: #333;
-      }
-      h1 {
-        margin: 0;
-        padding: 1rem 0;
-        font-size: 2.5rem;
-      }
-      @media screen {
-        html {
-          background: #eee;
-        }
-        body {
-          max-width: 80ch;
-          border-right: 1px solid #eee;
-        }
-      }
-      h3, h4, h5 {
-        margin: 0;
-      }
-      body, h4, h5 {
-        font-size: 10pt;
-        font-weight: normal;
-      }
-      header {
-        padding: 2rem 0 3rem 0;
-      }
-      section {
-        padding: 0 0 1rem 0;
-      }
-      .intro {
-        font-size: 1.5rem;
-        margin: 0 0 5rem 0;
-      }
-      dd {
-        margin: 0 0 1rem 0;
-      }
-      ul {
-        margin: 1rem 0 0 -4ch;
-        padding: 0 0 0 4ch;
-      }
-      li {
-        padding: 0 0 1rem 0;
-        list-style: none;
-      }
-      li::before {
-        content: "=> ";
-        position: relative;
-        margin-left: -3ch;
-      }
-      h5, dt, li::before, footer {
-        color: #aaa;
-      }
-      a {
-        color: #0074D9;
-      }
-      a svg {
-        width: 1rem;
-        height: 1rem;
-        vertical-align: middle;
-        margin-top: -2px;
-      }
-      footer {
-        padding: 0 0 1rem 0;
-      }
-      
-      aside {
-        position: fixed;
-        top: 0;
-        left: 80ch;
-        right: 0;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-      }
-    </style>
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
-
-    <header>
-      <div>email &nbsp;<a href="mailto:jsitkin@gmail.com">jsitkin@gmail.com</a></div>
-      <div>github <a href="https://github.com/dustmason">@dustmason</a></div>
-      <h1><span class="reveal">Jordan Sitkin</span><span class="cursor">_</span></h1>
-    </header>
     
-    <section>
-      <p class="intro">
-        I'm a developer based in Oakland, CA. Currently at
-        <a href="https://kitkraft.com">Kit&nbsp;Kraft</a>. 
-      </p>
-      
-      <dl>
-        <dt>Languages</dt>
-        <dd>Ruby, JavaScript, Python</dd>
-        <dt>Frameworks &amp; Platforms</dt>
-        <dd>
-          Amazon AWS, Apache, Arduino, ElasticSearch, Heroku, Nginx, Node.js,
-          PostgreSQL, Puma, Rails, Redis, RSpec, SASS, Spree, Sinatra, Unicorn
-        </dd>
-        <dt>Tools</dt>
-        <dd>Adobe CS, bash, Docker, Git, vim</dd>
-      </dl>
-    </section>
-
-    <section class="experience">
-      <h2 class="reveal">Skills &amp; Experience</h2>
-      
-      <p>
-        I started my career in 2000 designing packages for a toy company, but I've
-        enjoyed programming since I was a kid (my first computer was an Apple IIgs).
-        My first experience writing code was manually copying programs into a
-        terminal by hand from computer magazines!
-      </p>
-      <p>
-        I love programming. I enjoy creating and contributing to open source projects,
-        watching talks and lectures, taking online courses and working on side
-        projects. I find that my background as a designer influences my practice as
-        a programmer.
-      </p>
-
+    <div class="panel top">
       <section>
-        <h3>
-          <span class="reveal">Kit Kraft</span>
-          <a href="https://kitkraft.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
-        </h3>
-        <h4>Senior Developer</h4>
-        <h5>2015-2016 in Oakland, CA</h5>
-        <ul>
-          <li>Finished a complete rewrite and subsequent redesign of the site, leaving behind an aging PHP framework (X-Cart) and moving to a custom fork of a Rails framework (Spree).</li>
-          <li>Created a portable and scalable development / deployment workflow on top of docker and AWS.</li>
-          <li>Integrated the site with a new point of sale and inventory tracking system used at the brick and mortar store.</li>
-          <li>Created a custom shipping backend for automated shipping labels with USPS and FedEx.</li>
-          <li>Built accounting tools to help manage incoming and outgoing cash among several services.</li>
-        </ul>
+        <header>
+          <div>email &nbsp;<a href="mailto:jsitkin@gmail.com">jsitkin@gmail.com</a></div>
+          <div>github <a href="https://github.com/dustmason">@dustmason</a></div>
+          <h1><span>Jordan Sitkin</span></h1>
+        </header>
+        
+        <p class="intro">
+          I'm a developer based in Oakland, CA. Currently at
+          <a href="https://kitkraft.com">Kit&nbsp;Kraft</a>. 
+        </p>
+        
+        <a href="#" class="button">Full Resume</a>
       </section>
-
-      <section>
-        <h3>
-          <span class="reveal">Nuts.com</span>
-          <a href="https://nuts.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
-        </h3>
-        <h4>Tech Nut</h4>
-        <h5>2014-2015 in Oakland, CA</h5>
-        <ul>
-          <li>Executed a redesign of the site.</li>
-          <li>Organized a pile of jQuery spaghetti into a neat system of AMD modules.</li>
-          <li>Oversaw ongoing efforts to refine and improve the customer UX.</li>
-          <li>Helped move a brittle deployment flow based on Chef to a more robust one based on Docker and AWS.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>
-          <span class="reveal">Decurate</span>
-          <a href="https://www.designwithbenefits.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
-        </h3>
-        <h4>Co-Founder / CTO</h4>
-        <h5>2011-2014 in Santiago, Chile</h5>
-        <ul>
-          <li>Designed and coded a scratchbuilt ecommerce platform with rails, deployed on Heroku.</li>
-          <li>Optimized the stack to handle bursts of heavy traffic with aggressive caching and background job queues using memcached and redis.</li>
-          <li>Integrated APIs for payment processing including Authorize.net, Stripe and Dwolla.</li>
-          <li>Built a consistently threadsafe rails stack to facilitate on-demand scaling.</li>
-          <li>Designed and implemented the entire front-end, including UI/UX design and code.</li>
-          <li>Maintained a comprehensive test suite using RSpec and Capybara.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>
-          <span class="reveal">Specify</span>
-          <a href="http://specifyapp.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
-        </h3>
-        <h4>Co-Founder / CTO</h4>
-        <h5>2010-2014 in San Francisco, CA</h5>
-        <ul>
-          <li>Implemented a complex one page app without a javascript framework (learned many lessons).</li>
-          <li>Designed all branding and marketing materials including the public site.</li>
-          <li>Created an in-app live messaging feature using the OpenFire XMPP server, a custom javascript client for the browser and a ColdFusion component for the back-end.</li>
-          <li>Drafted a spec for an HTML microformat to facilitate data sharing and interoperability among other tools and services used by interior designers.</li>
-          <li>Specify continues to serve a growing customer base including the purchasing team at one of the largest hotel groups in the world.</li>
-        </ul>
-      </section>
-
-    </section>
-
-    <footer>
-      Updated September 2016
-    </footer>
+    </div>
     
+    <div class="panel resume">
+      <section>
+        <h2>Skills</h2>
+        <dl>
+          <dt>Languages</dt>
+          <dd>Ruby, JavaScript, Python</dd>
+          <dt>Frameworks &amp; Platforms</dt>
+          <dd>
+            Amazon AWS, Apache, Arduino, ElasticSearch, Heroku, Nginx, Node.js,
+            PostgreSQL, Puma, Rails, Redis, RSpec, SASS, Sinatra, Spree, Unicorn
+          </dd>
+          <dt>Tools</dt>
+          <dd>Adobe CS, bash, Docker, Git, vim</dd>
+        </dl>
+      </section>
+        
+      <section class="experience">
+        <h2>Recent Experience</h2>
+
+        <section>
+          <h3>
+            <span>Kit Kraft</span>
+            <a href="https://kitkraft.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+          </h3>
+          <h4>Senior Developer</h4>
+          <h5>From 2015 in Oakland, CA</h5>
+          
+          <p>
+            My grandparents started Kit Kraft in Studio City in 1946, and my father
+            took over running the store when I was a kid. In 2015 I decided to join
+            the family and help turn around a downward sales trend on the
+            then-aging website.
+          </p>
+          
+          <p>
+            I designed and developed a new site, migrating from an off-the-shelf
+            PHP framework (X-Cart) to a custom Rails project. Since launch, nearly
+            every aspect of the business has benefited. Together with the team in
+            Los Angeles I helped integrate a new point of sale system and modernize
+            outdated purchasing and inventory systems. Site revenue has increased
+            28%.
+          </p>
+          
+          <h5>Technical Highlights</h5>
+          
+          <ul>
+            <li>
+              Docker + Amazon ECS on AWS create a painless development and deployment
+              story. New team members can spin up a local dev stack with a single
+              command.
+            </li>
+            <li>
+              A new custom fulfillment backend helps get orders out quickly and
+              correctly. Integrations with our shipping providers handle postage
+              and labels.
+            </li>
+            <li>
+              Custom marketing tools help our team get the data they need and make
+              changes to site content without developer involvement.
+            </li>
+            <li>
+              System design embraces AWS services to lower operational overhead.
+              We utilize EC2, ECS &amp; ECR, S3, CloudFront, CloudWatch, RDS,
+              ElastiCache, Lambda, SQS, Route 53 and SES across two regions.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <span>Nuts.com</span>
+            <a href="https://nuts.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+          </h3>
+          <h4>Tech Nut</h4>
+          <h5>2014-2015 in Oakland, CA</h5>
+          <ul>
+            <li>Executed a redesign of the site.</li>
+            <li>Organized a pile of jQuery spaghetti into a neat system of AMD modules.</li>
+            <li>Oversaw ongoing efforts to refine and improve the customer UX.</li>
+            <li>Helped move a brittle deployment flow based on Chef to a more robust one based on Docker and AWS.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <span>Decurate</span>
+            <a href="https://www.designwithbenefits.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+          </h3>
+          <h4>Co-Founder / CTO</h4>
+          <h5>2011-2014 in Santiago, Chile</h5>
+          <ul>
+            <li>Designed and coded a scratchbuilt ecommerce platform with rails, deployed on Heroku.</li>
+            <li>Optimized the stack to handle bursts of heavy traffic with aggressive caching and background job queues using memcached and redis.</li>
+            <li>Integrated APIs for payment processing including Authorize.net, Stripe and Dwolla.</li>
+            <li>Built a consistently threadsafe rails stack to facilitate on-demand scaling.</li>
+            <li>Designed and implemented the entire front-end, including UI/UX design and code.</li>
+            <li>Maintained a comprehensive test suite using RSpec and Capybara.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <span>Specify</span>
+            <a href="http://specifyapp.com"><svg viewBox="0 0 32 32" style="fill:currentcolor"><path d="M4 4 L12 4 L12 8 L8 8 L8 24 L24 24 L24 20 L28 20 L28 28 L4 28 z M16 4 L28 4 L28 16 L24 12 L16 20 L12 16 L20 8z"></path></svg></a>
+          </h3>
+          <h4>Co-Founder / CTO</h4>
+          <h5>2010-2014 in San Francisco, CA</h5>
+          <ul>
+            <li>Implemented a complex one page app without a javascript framework (learned many lessons).</li>
+            <li>Designed all branding and marketing materials including the public site.</li>
+            <li>Created an in-app live messaging feature using the OpenFire XMPP server, a custom javascript client for the browser and a ColdFusion component for the back-end.</li>
+            <li>Drafted a spec for an HTML microformat to facilitate data sharing and interoperability among other tools and services used by interior designers.</li>
+            <li>Specify continues to serve a growing customer base including the purchasing team at one of the largest hotel groups in the world.</li>
+          </ul>
+        </section>
+
+      </section>
+
+      <footer>
+        Updated September 2016
+      </footer>
+      
+    </div>
+
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    
-    <script>
-      var title = document.getElementsByClassName("name")[0];
-      // var cursor = document.getElementsByClassName("cursor")[0];
-
-      function reveal(element, delay) {
-        var content, letters, revealerTimer;
-        content = element.textContent;
-        element.textContent = "_";
-        letters = content.split("");
-        setTimeout(function() {
-          element.textContent = letters.shift();
-          revealerTimer = setInterval(function() {
-            if (letters.length > 0) {
-              element.textContent = element.textContent + letters.shift();
-            } else {
-              clearInterval(revealerTimer);
-            }
-          }, 30);
-        }, delay);
-      }
-
-      var elements = document.getElementsByClassName("reveal");
-      for (i = 0; i < elements.length; i++) {
-        reveal(elements[i], i * 150);
-      }
-
-      // setInterval(function() {
-      //   if (cursor.style.display == "none") {
-      //     cursor.style.display = "inline";
-      //   } else {
-      //     cursor.style.display = "none";
-      //   }
-      // }, 750);
-      
-      // // // // // // // // // // // // // // // //
-      // // // // // // // // // // // // // // // //
-      // // // // // // // // // // // // // // // //
-      
-      var container, particle, list, tog, man, dx, dy, mx, my, d, t, f, i, n, o, p,
-        canvas, context, width, height, xscale, yscale, data, NUM_PARTICLES;
-      var THICKNESS = Math.pow(80, 2), COLOR = 0, DRAG = 0.55, EASE = 0.02;
-      
-      particle = { vx: 0, vy: 0, x: 0, y: 0 };
-      
-      container = document.createElement("aside");
-      canvas = document.createElement("canvas");
-      context = canvas.getContext("2d");
-      document.body.appendChild(container);
-      container.appendChild(canvas);
-      
-      var setScale = function() {
-        height = parseInt(container.clientHeight);
-        width = parseInt(height * 1.333);
-        xscale = d3.scaleLinear().range([0,width]).domain([0,600]);
-        yscale = d3.scaleLinear().range([0,height]).domain([0,450]);
-        console.log(width, height);
-        canvas.width = width;
-        canvas.height = height;
-        if (data) {
-          loadPoints(data);
-        }
-      }
-      
-      var loadPoints = function(points) {
-        data = points;
-        list = [];
-        NUM_PARTICLES = data.length;
-        for (i = 0; i < NUM_PARTICLES; i++) {
-          var p = Object.create(particle);
-          p.ox = xscale(data[i][0]);
-          p.oy = yscale(data[i][1]);
-          if (i === 0) {
-            p.x = p.ox;
-            p.y = p.oy;
-          } else {
-            p.x = xscale(data[i-1][0]);
-            p.y = yscale(data[i-1][1]);
-          }
-          list[i] = p;
-        }
-      }
-      
-      setScale();
-      window.addEventListener("resize", setScale);
-          
-      var step = function() {
-        if (tog = !tog) {
-          
-          // update positions of all points by easing closer to original coords
-          for (i = 0; i < NUM_PARTICLES; i++) {
-            p = list[i];
-            d = (dx = mx - p.x) * dx + (dy = my - p.y) * dy;
-            f = -THICKNESS / d;
-            if (d < THICKNESS) {
-              t = Math.atan2(dy, dx);
-              p.vx += f * Math.cos(t);
-              p.vy += f * Math.sin(t);
-            }
-            p.x += (p.vx *= DRAG) + (p.ox - p.x) * EASE;
-            p.y += (p.vy *= DRAG) + (p.oy - p.y) * EASE;
-          }
-
-        } else {
-          
-          // fade current canvas
-          context.fillStyle = "rgba(250,250,250,0.01)";
-          context.fillRect(0, 0, canvas.width, canvas.height);
-          
-          // activate pixel corresponding to each point, and each point to N/S/E/W
-          b = (a = context.getImageData(0, 0, width, height)).data;
-          for (i = 0; i < NUM_PARTICLES; i++) {
-            p = list[i];
-            b[n = (~~p.x + (~~p.y * width)) * 4] = b[n+1] = b[n+2] = COLOR, b[n+3] = 255;
-            // b[nn = n - (width * 4)] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
-            // b[nn = n + (width * 4)] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
-            // b[nn = n + 4] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
-            // b[nn = n - 4] = b[nn+1] = b[nn+2] = COLOR, b[nn+3] = 120;
-          }
-          context.putImageData(a, 0, 0);
-          
-          // context.clearRect(0, 0, canvas.width, canvas.height);
-          // context.fillStyle = "rgba(255,255,255,0.1)";
-          // context.fillRect(0, 0, canvas.width, canvas.height);
-          // context.fillStyle = "#333";
-          // context.moveTo(list[0].x, list[0].y);
-          // for (i = 1; i < NUM_PARTICLES; i++) {
-          //   p = list[i];
-          //   o = list[i-1];
-          //   context.beginPath();
-          //   // context.moveTo(o.x, o.y);
-          //   // context.lineTo(p.x, p.y);
-          //   // context.stroke();
-          //   context.arc(p.x, p.y, 2, 0, 2 * Math.PI);
-          //   // context.rect(p.x, p.y, 3, 3);
-          //   context.fill();
-          //   context.closePath();
-          // }
-          
-        }
-        requestAnimationFrame(step);
-      }
-      
-      container.addEventListener('mousemove', function(e) {
-        var bounds = container.getBoundingClientRect();
-        mx = e.clientX - bounds.left;
-        my = e.clientY - bounds.top;
-        man = true;
-      });
-  
-      
-      var xhr = d3.json("dave.json")
-        // .on("progress", function() { console.log("progress"); })
-        // .on("load", function(json) { console.log("success!"); })
-        // .on("error", function(error) { console.log("failure!", error); })
-        .get(function(error, d) {
-          loadPoints(d);
-          step();
-        });
-    </script>
+    <script src="smoothscroll.min.js"> </script>
+    <script src="script.js"> </script>
       
   </body>
 </html>
