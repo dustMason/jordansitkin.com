@@ -1,7 +1,8 @@
 // Hi, thanks for checking out my source code.
+//
 // You might find the `step` function below to be the most interesting part.
 // If you're wondering how the point cloud gets created, check out
-// `create_point_cloud.py`
+// `create_point_cloud.py` at https://github.com/dustMason/jordansitkin.com
 
 var list, tog, dx, dy, d,
   p, o, i, n, t,
@@ -11,14 +12,18 @@ var list, tog, dx, dy, d,
   xscale, yscale,
   data, pcount, next, quartets,
   particle = { x: 0, y: 0, nextx: 0, nexty: 0 },
-  container = document.createElement("aside"),
+  container = document.querySelector("aside"),
   canvas = document.createElement("canvas"),
-  context = canvas.getContext("2d");
+  context = canvas.getContext("2d"),
+  style = document.querySelector("#top-panel-style"),
+  originalStyle = style.textContent,
+  topPanel = document.querySelector(".top.panel");
   
-document.body.appendChild(container);
+// document.body.appendChild(container);
+document.body.appendChild(style);
 container.appendChild(canvas);
 
-var setScale = function() {
+var rescaleData = function() {
   height = parseInt(container.clientHeight);
   width = parseInt(height * 1.333);
   xscale = d3.scaleLinear().range([0,width]).domain([0,600]);
@@ -28,6 +33,11 @@ var setScale = function() {
   if (data) {
     loadPoints(data);
   }
+}
+
+var createMediaQueryForIntro = function() {
+  var introHeight = topPanel.clientHeight;
+  style.textContent = "@media screen and (min-height:"+introHeight+"px) { "+originalStyle+" }";
 }
 
 var loadPoints = function(points) {
@@ -51,8 +61,15 @@ var loadPoints = function(points) {
   }
 }
 
-setScale();
-window.addEventListener("resize", setScale);
+var handleResize = function() {
+  rescaleData();
+  createMediaQueryForIntro();
+}
+window.addEventListener("resize", handleResize);
+handleResize();
+
+context.fillStyle = "rgb(55,59,65)";
+context.fillRect(0, 0, canvas.width, canvas.height);
     
 // on each iteration, `step` alternates between calculating the positions of
 // each particle and rendering the particles to the canvas. each point eases
@@ -81,7 +98,11 @@ var step = function() {
 
   } else {
     
-    b = (a = context.createImageData(width, height)).data;
+    context.fillStyle = "rgba(55,59,65,0.125)";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // b = (a = context.createImageData(width, height)).data;
+    b = (a = context.getImageData(0, 0, width, height)).data;
     // activate the pixel corresponding to each point
     for (i = 0; i < pcount; i++) {
       p = list[i];
@@ -89,10 +110,6 @@ var step = function() {
       quartets = [
         // coordinates for a plus sign, relative to `p`
         [n, n+1, n+2, n+3],
-        [nn = n-(width*4), nn+1, nn+2, nn+3],
-        [nn = n+(width*4), nn+1, nn+2, nn+3],
-        [nn = n+4, nn+1, nn+2, nn+3],
-        [nn = n-4, nn+1, nn+2, nn+3],
         [nn = n-(width*8), nn+1, nn+2, nn+3],
         [nn = n+(width*8), nn+1, nn+2, nn+3],
         [nn = n+8, nn+1, nn+2, nn+3],
@@ -109,13 +126,10 @@ var step = function() {
   requestAnimationFrame(step);
 }
 
-d3.json("dave.json").get(function(error, d) {
+d3.json("jordan.json").get(function(error, d) {
   loadPoints(d);
   step();
-})
-// .on("progress", function() { console.log("progress"); })
-// .on("load", function(json) { console.log("success!"); })
-// .on("error", function(error) { console.log("failure!", error); })
+});
 
 var button = document.querySelector("a.button");
 button.addEventListener("click", function(e) {

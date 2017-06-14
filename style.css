@@ -9,7 +9,7 @@ body {
 
 @media screen {
   html {
-    background: #373b41;
+    background: rgb(55,59,65);
   }
   body {
     background: #282a2e;
@@ -17,19 +17,6 @@ body {
     max-width: 80ch;
   }
 }
-
-@media screen and (min-height: 578px) {
-  .panel {
-    min-height: 100vh;
-    position: relative;
-  }
-  .panel.top section {
-    position: absolute;
-    width: 100%;
-    bottom: 1rem;
-  }
-}
-
 
 h1 {
   margin: 0;
@@ -88,8 +75,12 @@ li::before {
   margin-left: -3ch;
 }
 
-h5, dt, li::before, footer {
+h5, dt, li::before, .panel footer {
   color: #009688;
+}
+
+.panel footer {
+  padding: 0 0 1rem 0;
 }
 
 a {
@@ -113,8 +104,12 @@ a.button {
   font-weight: bold;
 }
 
-footer {
-  padding: 0 0 1rem 0;
+a.button.small {
+  padding: 6px 15px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 8pt;
+  background: #B2CCD6;
 }
 
 aside {
